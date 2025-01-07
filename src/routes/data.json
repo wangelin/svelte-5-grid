@@ -1,0 +1,1202 @@
+[
+  {
+    "id": 1,
+    "title": "Effektivisering av arbetsflöden med AI",
+    "author": "Anna Svensson",
+    "content": "I denna artikel undersöker vi hur AI kan användas för att effektivisera arbetsflöden inom olika branscher.",
+    "published_date": "2024-06-01",
+    "views": 1023,
+    "likes": 124,
+    "comments": 12
+  },
+  {
+    "id": 2,
+    "title": "Framtidens hållbara energilösningar",
+    "author": "Karl Lindström",
+    "content": "Hållbara energilösningar blir allt viktigare i dagens samhälle. Här tittar vi på olika alternativ.",
+    "published_date": "2024-05-15",
+    "views": 875,
+    "likes": 98,
+    "comments": 7
+  },
+  {
+    "id": 3,
+    "title": "Introduktion till quantum computing",
+    "author": "Lisa Ek",
+    "content": "Quantum computing är en snabbt växande teknologi som lovar att revolutionera databehandling.",
+    "published_date": "2024-04-20",
+    "views": 1450,
+    "likes": 230,
+    "comments": 18
+  },
+  {
+    "id": 4,
+    "title": "Så förbättrar du din produktivitet med rätt verktyg",
+    "author": "Mikael Jonsson",
+    "content": "Produktivitet handlar inte bara om att arbeta hårdare utan smartare. Vi går igenom de bästa verktygen.",
+    "published_date": "2024-03-10",
+    "views": 620,
+    "likes": 54,
+    "comments": 5
+  },
+  {
+    "id": 5,
+    "title": "En guide till modern webbdesign",
+    "author": "Sofia Berg",
+    "content": "Webbdesign utvecklas ständigt. I denna guide går vi igenom de senaste trenderna och bästa praxis.",
+    "published_date": "2024-02-05",
+    "views": 980,
+    "likes": 112,
+    "comments": 9
+  },
+  {
+    "id": 6,
+    "title": "Blockchain-teknologi för nybörjare",
+    "author": "Erik Nilsson",
+    "content": "En introduktion till blockchain och dess potentiella användningsområden.",
+    "published_date": "2024-01-25",
+    "views": 1345,
+    "likes": 210,
+    "comments": 14
+  },
+  {
+    "id": 7,
+    "title": "Framsteg inom självkörande fordon",
+    "author": "Nina Karlsson",
+    "content": "De senaste innovationerna inom självkörande fordon och deras framtid.",
+    "published_date": "2024-01-15",
+    "views": 750,
+    "likes": 85,
+    "comments": 6
+  },
+  {
+    "id": 8,
+    "title": "Molntjänster: För- och nackdelar",
+    "author": "Oskar Andersson",
+    "content": "En genomgång av för- och nackdelar med olika molntjänster.",
+    "published_date": "2023-12-20",
+    "views": 1120,
+    "likes": 150,
+    "comments": 11
+  },
+  {
+    "id": 9,
+    "title": "Cybersäkerhet i en digital värld",
+    "author": "Karin Pettersson",
+    "content": "Hur skyddar vi oss mot digitala hot i dagens samhälle?",
+    "published_date": "2023-11-18",
+    "views": 980,
+    "likes": 123,
+    "comments": 8
+  },
+  {
+    "id": 10,
+    "title": "En djupdykning i maskininlärning",
+    "author": "Johan Sjöberg",
+    "content": "Maskininlärningens grunder och praktiska tillämpningar.",
+    "published_date": "2023-10-05",
+    "views": 1560,
+    "likes": 240,
+    "comments": 20
+  },
+  {
+    "id": 11,
+    "title": "Så bygger du en framgångsrik startup",
+    "author": "Maria Holm",
+    "content": "Tips och råd för att starta och driva en framgångsrik startup.",
+    "published_date": "2023-09-12",
+    "views": 680,
+    "likes": 70,
+    "comments": 4
+  },
+  {
+    "id": 12,
+    "title": "IoT: Framtidens uppkopplade samhälle",
+    "author": "Niklas Berglund",
+    "content": "Hur IoT förändrar våra liv och vårt samhälle.",
+    "published_date": "2023-08-28",
+    "views": 890,
+    "likes": 110,
+    "comments": 10
+  },
+  {
+    "id": 13,
+    "title": "Digital marknadsföring 2024",
+    "author": "Eva Larsson",
+    "content": "De hetaste trenderna inom digital marknadsföring för 2024.",
+    "published_date": "2023-07-19",
+    "views": 1150,
+    "likes": 130,
+    "comments": 9
+  },
+  {
+    "id": 14,
+    "title": "E-handelns framtid",
+    "author": "Daniel Eriksson",
+    "content": "Vad kan vi förvänta oss av e-handeln under de kommande åren?",
+    "published_date": "2023-06-10",
+    "views": 1040,
+    "likes": 125,
+    "comments": 8
+  },
+  {
+    "id": 15,
+    "title": "Virtuell verklighet inom utbildning",
+    "author": "Linda Forsberg",
+    "content": "Hur VR kan användas för att förbättra lärandet.",
+    "published_date": "2023-05-14",
+    "views": 780,
+    "likes": 95,
+    "comments": 6
+  },
+  {
+    "id": 16,
+    "title": "5G och dess påverkan på samhället",
+    "author": "Martin Olsson",
+    "content": "Vilka förändringar kommer 5G att medföra?",
+    "published_date": "2023-04-22",
+    "views": 890,
+    "likes": 108,
+    "comments": 7
+  },
+  {
+    "id": 17,
+    "title": "Grön teknologi för en bättre framtid",
+    "author": "Helena Nyström",
+    "content": "Innovationer inom grön teknologi som hjälper miljön.",
+    "published_date": "2023-03-30",
+    "views": 950,
+    "likes": 120,
+    "comments": 9
+  },
+  {
+    "id": 18,
+    "title": "Robotar i industrin",
+    "author": "Fredrik Larsson",
+    "content": "Hur robotar används för att förbättra industriproduktionen.",
+    "published_date": "2023-02-18",
+    "views": 1020,
+    "likes": 128,
+    "comments": 10
+  },
+  {
+    "id": 19,
+    "title": "Biometri och säkerhet",
+    "author": "Emma Wallin",
+    "content": "För- och nackdelar med biometri för säkerhetslösningar.",
+    "published_date": "2023-01-05",
+    "views": 870,
+    "likes": 99,
+    "comments": 5
+  },
+  {
+    "id": 20,
+    "title": "Teknikens roll i framtidens sjukvård",
+    "author": "Anders Lindqvist",
+    "content": "Hur ny teknologi kan förbättra sjukvården.",
+    "published_date": "2022-12-15",
+    "views": 1330,
+    "likes": 200,
+    "comments": 15
+  },
+  {
+    "id": 1,
+    "title": "Effektivisering av arbetsflöden med AI",
+    "author": "Anna Svensson",
+    "content": "I denna artikel undersöker vi hur AI kan användas för att effektivisera arbetsflöden inom olika branscher.",
+    "published_date": "2024-06-01",
+    "views": 1023,
+    "likes": 124,
+    "comments": 12
+  },
+  {
+    "id": 2,
+    "title": "Framtidens hållbara energilösningar",
+    "author": "Karl Lindström",
+    "content": "Hållbara energilösningar blir allt viktigare i dagens samhälle. Här tittar vi på olika alternativ.",
+    "published_date": "2024-05-15",
+    "views": 875,
+    "likes": 98,
+    "comments": 7
+  },
+  {
+    "id": 3,
+    "title": "Introduktion till quantum computing",
+    "author": "Lisa Ek",
+    "content": "Quantum computing är en snabbt växande teknologi som lovar att revolutionera databehandling.",
+    "published_date": "2024-04-20",
+    "views": 1450,
+    "likes": 230,
+    "comments": 18
+  },
+  {
+    "id": 4,
+    "title": "Så förbättrar du din produktivitet med rätt verktyg",
+    "author": "Mikael Jonsson",
+    "content": "Produktivitet handlar inte bara om att arbeta hårdare utan smartare. Vi går igenom de bästa verktygen.",
+    "published_date": "2024-03-10",
+    "views": 620,
+    "likes": 54,
+    "comments": 5
+  },
+  {
+    "id": 5,
+    "title": "En guide till modern webbdesign",
+    "author": "Sofia Berg",
+    "content": "Webbdesign utvecklas ständigt. I denna guide går vi igenom de senaste trenderna och bästa praxis.",
+    "published_date": "2024-02-05",
+    "views": 980,
+    "likes": 112,
+    "comments": 9
+  },
+  {
+    "id": 6,
+    "title": "Blockchain-teknologi för nybörjare",
+    "author": "Erik Nilsson",
+    "content": "En introduktion till blockchain och dess potentiella användningsområden.",
+    "published_date": "2024-01-25",
+    "views": 1345,
+    "likes": 210,
+    "comments": 14
+  },
+  {
+    "id": 7,
+    "title": "Framsteg inom självkörande fordon",
+    "author": "Nina Karlsson",
+    "content": "De senaste innovationerna inom självkörande fordon och deras framtid.",
+    "published_date": "2024-01-15",
+    "views": 750,
+    "likes": 85,
+    "comments": 6
+  },
+  {
+    "id": 8,
+    "title": "Molntjänster: För- och nackdelar",
+    "author": "Oskar Andersson",
+    "content": "En genomgång av för- och nackdelar med olika molntjänster.",
+    "published_date": "2023-12-20",
+    "views": 1120,
+    "likes": 150,
+    "comments": 11
+  },
+  {
+    "id": 9,
+    "title": "Cybersäkerhet i en digital värld",
+    "author": "Karin Pettersson",
+    "content": "Hur skyddar vi oss mot digitala hot i dagens samhälle?",
+    "published_date": "2023-11-18",
+    "views": 980,
+    "likes": 123,
+    "comments": 8
+  },
+  {
+    "id": 10,
+    "title": "En djupdykning i maskininlärning",
+    "author": "Johan Sjöberg",
+    "content": "Maskininlärningens grunder och praktiska tillämpningar.",
+    "published_date": "2023-10-05",
+    "views": 1560,
+    "likes": 240,
+    "comments": 20
+  },
+  {
+    "id": 11,
+    "title": "Så bygger du en framgångsrik startup",
+    "author": "Maria Holm",
+    "content": "Tips och råd för att starta och driva en framgångsrik startup.",
+    "published_date": "2023-09-12",
+    "views": 680,
+    "likes": 70,
+    "comments": 4
+  },
+  {
+    "id": 12,
+    "title": "IoT: Framtidens uppkopplade samhälle",
+    "author": "Niklas Berglund",
+    "content": "Hur IoT förändrar våra liv och vårt samhälle.",
+    "published_date": "2023-08-28",
+    "views": 890,
+    "likes": 110,
+    "comments": 10
+  },
+  {
+    "id": 13,
+    "title": "Digital marknadsföring 2024",
+    "author": "Eva Larsson",
+    "content": "De hetaste trenderna inom digital marknadsföring för 2024.",
+    "published_date": "2023-07-19",
+    "views": 1150,
+    "likes": 130,
+    "comments": 9
+  },
+  {
+    "id": 14,
+    "title": "E-handelns framtid",
+    "author": "Daniel Eriksson",
+    "content": "Vad kan vi förvänta oss av e-handeln under de kommande åren?",
+    "published_date": "2023-06-10",
+    "views": 1040,
+    "likes": 125,
+    "comments": 8
+  },
+  {
+    "id": 15,
+    "title": "Virtuell verklighet inom utbildning",
+    "author": "Linda Forsberg",
+    "content": "Hur VR kan användas för att förbättra lärandet.",
+    "published_date": "2023-05-14",
+    "views": 780,
+    "likes": 95,
+    "comments": 6
+  },
+  {
+    "id": 16,
+    "title": "5G och dess påverkan på samhället",
+    "author": "Martin Olsson",
+    "content": "Vilka förändringar kommer 5G att medföra?",
+    "published_date": "2023-04-22",
+    "views": 890,
+    "likes": 108,
+    "comments": 7
+  },
+  {
+    "id": 17,
+    "title": "Grön teknologi för en bättre framtid",
+    "author": "Helena Nyström",
+    "content": "Innovationer inom grön teknologi som hjälper miljön.",
+    "published_date": "2023-03-30",
+    "views": 950,
+    "likes": 120,
+    "comments": 9
+  },
+  {
+    "id": 18,
+    "title": "Robotar i industrin",
+    "author": "Fredrik Larsson",
+    "content": "Hur robotar används för att förbättra industriproduktionen.",
+    "published_date": "2023-02-18",
+    "views": 1020,
+    "likes": 128,
+    "comments": 10
+  },
+  {
+    "id": 19,
+    "title": "Biometri och säkerhet",
+    "author": "Emma Wallin",
+    "content": "För- och nackdelar med biometri för säkerhetslösningar.",
+    "published_date": "2023-01-05",
+    "views": 870,
+    "likes": 99,
+    "comments": 5
+  },
+  {
+    "id": 20,
+    "title": "Teknikens roll i framtidens sjukvård",
+    "author": "Anders Lindqvist",
+    "content": "Hur ny teknologi kan förbättra sjukvården.",
+    "published_date": "2022-12-15",
+    "views": 1330,
+    "likes": 200,
+    "comments": 15
+  },
+  {
+    "id": 1,
+    "title": "Effektivisering av arbetsflöden med AI",
+    "author": "Anna Svensson",
+    "content": "I denna artikel undersöker vi hur AI kan användas för att effektivisera arbetsflöden inom olika branscher.",
+    "published_date": "2024-06-01",
+    "views": 1023,
+    "likes": 124,
+    "comments": 12
+  },
+  {
+    "id": 2,
+    "title": "Framtidens hållbara energilösningar",
+    "author": "Karl Lindström",
+    "content": "Hållbara energilösningar blir allt viktigare i dagens samhälle. Här tittar vi på olika alternativ.",
+    "published_date": "2024-05-15",
+    "views": 875,
+    "likes": 98,
+    "comments": 7
+  },
+  {
+    "id": 3,
+    "title": "Introduktion till quantum computing",
+    "author": "Lisa Ek",
+    "content": "Quantum computing är en snabbt växande teknologi som lovar att revolutionera databehandling.",
+    "published_date": "2024-04-20",
+    "views": 1450,
+    "likes": 230,
+    "comments": 18
+  },
+  {
+    "id": 4,
+    "title": "Så förbättrar du din produktivitet med rätt verktyg",
+    "author": "Mikael Jonsson",
+    "content": "Produktivitet handlar inte bara om att arbeta hårdare utan smartare. Vi går igenom de bästa verktygen.",
+    "published_date": "2024-03-10",
+    "views": 620,
+    "likes": 54,
+    "comments": 5
+  },
+  {
+    "id": 5,
+    "title": "En guide till modern webbdesign",
+    "author": "Sofia Berg",
+    "content": "Webbdesign utvecklas ständigt. I denna guide går vi igenom de senaste trenderna och bästa praxis.",
+    "published_date": "2024-02-05",
+    "views": 980,
+    "likes": 112,
+    "comments": 9
+  },
+  {
+    "id": 6,
+    "title": "Blockchain-teknologi för nybörjare",
+    "author": "Erik Nilsson",
+    "content": "En introduktion till blockchain och dess potentiella användningsområden.",
+    "published_date": "2024-01-25",
+    "views": 1345,
+    "likes": 210,
+    "comments": 14
+  },
+  {
+    "id": 7,
+    "title": "Framsteg inom självkörande fordon",
+    "author": "Nina Karlsson",
+    "content": "De senaste innovationerna inom självkörande fordon och deras framtid.",
+    "published_date": "2024-01-15",
+    "views": 750,
+    "likes": 85,
+    "comments": 6
+  },
+  {
+    "id": 8,
+    "title": "Molntjänster: För- och nackdelar",
+    "author": "Oskar Andersson",
+    "content": "En genomgång av för- och nackdelar med olika molntjänster.",
+    "published_date": "2023-12-20",
+    "views": 1120,
+    "likes": 150,
+    "comments": 11
+  },
+  {
+    "id": 9,
+    "title": "Cybersäkerhet i en digital värld",
+    "author": "Karin Pettersson",
+    "content": "Hur skyddar vi oss mot digitala hot i dagens samhälle?",
+    "published_date": "2023-11-18",
+    "views": 980,
+    "likes": 123,
+    "comments": 8
+  },
+  {
+    "id": 10,
+    "title": "En djupdykning i maskininlärning",
+    "author": "Johan Sjöberg",
+    "content": "Maskininlärningens grunder och praktiska tillämpningar.",
+    "published_date": "2023-10-05",
+    "views": 1560,
+    "likes": 240,
+    "comments": 20
+  },
+  {
+    "id": 11,
+    "title": "Så bygger du en framgångsrik startup",
+    "author": "Maria Holm",
+    "content": "Tips och råd för att starta och driva en framgångsrik startup.",
+    "published_date": "2023-09-12",
+    "views": 680,
+    "likes": 70,
+    "comments": 4
+  },
+  {
+    "id": 12,
+    "title": "IoT: Framtidens uppkopplade samhälle",
+    "author": "Niklas Berglund",
+    "content": "Hur IoT förändrar våra liv och vårt samhälle.",
+    "published_date": "2023-08-28",
+    "views": 890,
+    "likes": 110,
+    "comments": 10
+  },
+  {
+    "id": 13,
+    "title": "Digital marknadsföring 2024",
+    "author": "Eva Larsson",
+    "content": "De hetaste trenderna inom digital marknadsföring för 2024.",
+    "published_date": "2023-07-19",
+    "views": 1150,
+    "likes": 130,
+    "comments": 9
+  },
+  {
+    "id": 14,
+    "title": "E-handelns framtid",
+    "author": "Daniel Eriksson",
+    "content": "Vad kan vi förvänta oss av e-handeln under de kommande åren?",
+    "published_date": "2023-06-10",
+    "views": 1040,
+    "likes": 125,
+    "comments": 8
+  },
+  {
+    "id": 15,
+    "title": "Virtuell verklighet inom utbildning",
+    "author": "Linda Forsberg",
+    "content": "Hur VR kan användas för att förbättra lärandet.",
+    "published_date": "2023-05-14",
+    "views": 780,
+    "likes": 95,
+    "comments": 6
+  },
+  {
+    "id": 16,
+    "title": "5G och dess påverkan på samhället",
+    "author": "Martin Olsson",
+    "content": "Vilka förändringar kommer 5G att medföra?",
+    "published_date": "2023-04-22",
+    "views": 890,
+    "likes": 108,
+    "comments": 7
+  },
+  {
+    "id": 17,
+    "title": "Grön teknologi för en bättre framtid",
+    "author": "Helena Nyström",
+    "content": "Innovationer inom grön teknologi som hjälper miljön.",
+    "published_date": "2023-03-30",
+    "views": 950,
+    "likes": 120,
+    "comments": 9
+  },
+  {
+    "id": 18,
+    "title": "Robotar i industrin",
+    "author": "Fredrik Larsson",
+    "content": "Hur robotar används för att förbättra industriproduktionen.",
+    "published_date": "2023-02-18",
+    "views": 1020,
+    "likes": 128,
+    "comments": 10
+  },
+  {
+    "id": 19,
+    "title": "Biometri och säkerhet",
+    "author": "Emma Wallin",
+    "content": "För- och nackdelar med biometri för säkerhetslösningar.",
+    "published_date": "2023-01-05",
+    "views": 870,
+    "likes": 99,
+    "comments": 5
+  },
+  {
+    "id": 20,
+    "title": "Teknikens roll i framtidens sjukvård",
+    "author": "Anders Lindqvist",
+    "content": "Hur ny teknologi kan förbättra sjukvården.",
+    "published_date": "2022-12-15",
+    "views": 1330,
+    "likes": 200,
+    "comments": 15
+  },
+  {
+    "id": 1,
+    "title": "Effektivisering av arbetsflöden med AI",
+    "author": "Anna Svensson",
+    "content": "I denna artikel undersöker vi hur AI kan användas för att effektivisera arbetsflöden inom olika branscher.",
+    "published_date": "2024-06-01",
+    "views": 1023,
+    "likes": 124,
+    "comments": 12
+  },
+  {
+    "id": 2,
+    "title": "Framtidens hållbara energilösningar",
+    "author": "Karl Lindström",
+    "content": "Hållbara energilösningar blir allt viktigare i dagens samhälle. Här tittar vi på olika alternativ.",
+    "published_date": "2024-05-15",
+    "views": 875,
+    "likes": 98,
+    "comments": 7
+  },
+  {
+    "id": 3,
+    "title": "Introduktion till quantum computing",
+    "author": "Lisa Ek",
+    "content": "Quantum computing är en snabbt växande teknologi som lovar att revolutionera databehandling.",
+    "published_date": "2024-04-20",
+    "views": 1450,
+    "likes": 230,
+    "comments": 18
+  },
+  {
+    "id": 4,
+    "title": "Så förbättrar du din produktivitet med rätt verktyg",
+    "author": "Mikael Jonsson",
+    "content": "Produktivitet handlar inte bara om att arbeta hårdare utan smartare. Vi går igenom de bästa verktygen.",
+    "published_date": "2024-03-10",
+    "views": 620,
+    "likes": 54,
+    "comments": 5
+  },
+  {
+    "id": 5,
+    "title": "En guide till modern webbdesign",
+    "author": "Sofia Berg",
+    "content": "Webbdesign utvecklas ständigt. I denna guide går vi igenom de senaste trenderna och bästa praxis.",
+    "published_date": "2024-02-05",
+    "views": 980,
+    "likes": 112,
+    "comments": 9
+  },
+  {
+    "id": 6,
+    "title": "Blockchain-teknologi för nybörjare",
+    "author": "Erik Nilsson",
+    "content": "En introduktion till blockchain och dess potentiella användningsområden.",
+    "published_date": "2024-01-25",
+    "views": 1345,
+    "likes": 210,
+    "comments": 14
+  },
+  {
+    "id": 7,
+    "title": "Framsteg inom självkörande fordon",
+    "author": "Nina Karlsson",
+    "content": "De senaste innovationerna inom självkörande fordon och deras framtid.",
+    "published_date": "2024-01-15",
+    "views": 750,
+    "likes": 85,
+    "comments": 6
+  },
+  {
+    "id": 8,
+    "title": "Molntjänster: För- och nackdelar",
+    "author": "Oskar Andersson",
+    "content": "En genomgång av för- och nackdelar med olika molntjänster.",
+    "published_date": "2023-12-20",
+    "views": 1120,
+    "likes": 150,
+    "comments": 11
+  },
+  {
+    "id": 9,
+    "title": "Cybersäkerhet i en digital värld",
+    "author": "Karin Pettersson",
+    "content": "Hur skyddar vi oss mot digitala hot i dagens samhälle?",
+    "published_date": "2023-11-18",
+    "views": 980,
+    "likes": 123,
+    "comments": 8
+  },
+  {
+    "id": 10,
+    "title": "En djupdykning i maskininlärning",
+    "author": "Johan Sjöberg",
+    "content": "Maskininlärningens grunder och praktiska tillämpningar.",
+    "published_date": "2023-10-05",
+    "views": 1560,
+    "likes": 240,
+    "comments": 20
+  },
+  {
+    "id": 11,
+    "title": "Så bygger du en framgångsrik startup",
+    "author": "Maria Holm",
+    "content": "Tips och råd för att starta och driva en framgångsrik startup.",
+    "published_date": "2023-09-12",
+    "views": 680,
+    "likes": 70,
+    "comments": 4
+  },
+  {
+    "id": 12,
+    "title": "IoT: Framtidens uppkopplade samhälle",
+    "author": "Niklas Berglund",
+    "content": "Hur IoT förändrar våra liv och vårt samhälle.",
+    "published_date": "2023-08-28",
+    "views": 890,
+    "likes": 110,
+    "comments": 10
+  },
+  {
+    "id": 13,
+    "title": "Digital marknadsföring 2024",
+    "author": "Eva Larsson",
+    "content": "De hetaste trenderna inom digital marknadsföring för 2024.",
+    "published_date": "2023-07-19",
+    "views": 1150,
+    "likes": 130,
+    "comments": 9
+  },
+  {
+    "id": 14,
+    "title": "E-handelns framtid",
+    "author": "Daniel Eriksson",
+    "content": "Vad kan vi förvänta oss av e-handeln under de kommande åren?",
+    "published_date": "2023-06-10",
+    "views": 1040,
+    "likes": 125,
+    "comments": 8
+  },
+  {
+    "id": 15,
+    "title": "Virtuell verklighet inom utbildning",
+    "author": "Linda Forsberg",
+    "content": "Hur VR kan användas för att förbättra lärandet.",
+    "published_date": "2023-05-14",
+    "views": 780,
+    "likes": 95,
+    "comments": 6
+  },
+  {
+    "id": 16,
+    "title": "5G och dess påverkan på samhället",
+    "author": "Martin Olsson",
+    "content": "Vilka förändringar kommer 5G att medföra?",
+    "published_date": "2023-04-22",
+    "views": 890,
+    "likes": 108,
+    "comments": 7
+  },
+  {
+    "id": 17,
+    "title": "Grön teknologi för en bättre framtid",
+    "author": "Helena Nyström",
+    "content": "Innovationer inom grön teknologi som hjälper miljön.",
+    "published_date": "2023-03-30",
+    "views": 950,
+    "likes": 120,
+    "comments": 9
+  },
+  {
+    "id": 18,
+    "title": "Robotar i industrin",
+    "author": "Fredrik Larsson",
+    "content": "Hur robotar används för att förbättra industriproduktionen.",
+    "published_date": "2023-02-18",
+    "views": 1020,
+    "likes": 128,
+    "comments": 10
+  },
+  {
+    "id": 19,
+    "title": "Biometri och säkerhet",
+    "author": "Emma Wallin",
+    "content": "För- och nackdelar med biometri för säkerhetslösningar.",
+    "published_date": "2023-01-05",
+    "views": 870,
+    "likes": 99,
+    "comments": 5
+  },
+  {
+    "id": 20,
+    "title": "Teknikens roll i framtidens sjukvård",
+    "author": "Anders Lindqvist",
+    "content": "Hur ny teknologi kan förbättra sjukvården.",
+    "published_date": "2022-12-15",
+    "views": 1330,
+    "likes": 200,
+    "comments": 15
+  },
+  {
+    "id": 1,
+    "title": "Effektivisering av arbetsflöden med AI",
+    "author": "Anna Svensson",
+    "content": "I denna artikel undersöker vi hur AI kan användas för att effektivisera arbetsflöden inom olika branscher.",
+    "published_date": "2024-06-01",
+    "views": 1023,
+    "likes": 124,
+    "comments": 12
+  },
+  {
+    "id": 2,
+    "title": "Framtidens hållbara energilösningar",
+    "author": "Karl Lindström",
+    "content": "Hållbara energilösningar blir allt viktigare i dagens samhälle. Här tittar vi på olika alternativ.",
+    "published_date": "2024-05-15",
+    "views": 875,
+    "likes": 98,
+    "comments": 7
+  },
+  {
+    "id": 3,
+    "title": "Introduktion till quantum computing",
+    "author": "Lisa Ek",
+    "content": "Quantum computing är en snabbt växande teknologi som lovar att revolutionera databehandling.",
+    "published_date": "2024-04-20",
+    "views": 1450,
+    "likes": 230,
+    "comments": 18
+  },
+  {
+    "id": 4,
+    "title": "Så förbättrar du din produktivitet med rätt verktyg",
+    "author": "Mikael Jonsson",
+    "content": "Produktivitet handlar inte bara om att arbeta hårdare utan smartare. Vi går igenom de bästa verktygen.",
+    "published_date": "2024-03-10",
+    "views": 620,
+    "likes": 54,
+    "comments": 5
+  },
+  {
+    "id": 5,
+    "title": "En guide till modern webbdesign",
+    "author": "Sofia Berg",
+    "content": "Webbdesign utvecklas ständigt. I denna guide går vi igenom de senaste trenderna och bästa praxis.",
+    "published_date": "2024-02-05",
+    "views": 980,
+    "likes": 112,
+    "comments": 9
+  },
+  {
+    "id": 6,
+    "title": "Blockchain-teknologi för nybörjare",
+    "author": "Erik Nilsson",
+    "content": "En introduktion till blockchain och dess potentiella användningsområden.",
+    "published_date": "2024-01-25",
+    "views": 1345,
+    "likes": 210,
+    "comments": 14
+  },
+  {
+    "id": 7,
+    "title": "Framsteg inom självkörande fordon",
+    "author": "Nina Karlsson",
+    "content": "De senaste innovationerna inom självkörande fordon och deras framtid.",
+    "published_date": "2024-01-15",
+    "views": 750,
+    "likes": 85,
+    "comments": 6
+  },
+  {
+    "id": 8,
+    "title": "Molntjänster: För- och nackdelar",
+    "author": "Oskar Andersson",
+    "content": "En genomgång av för- och nackdelar med olika molntjänster.",
+    "published_date": "2023-12-20",
+    "views": 1120,
+    "likes": 150,
+    "comments": 11
+  },
+  {
+    "id": 9,
+    "title": "Cybersäkerhet i en digital värld",
+    "author": "Karin Pettersson",
+    "content": "Hur skyddar vi oss mot digitala hot i dagens samhälle?",
+    "published_date": "2023-11-18",
+    "views": 980,
+    "likes": 123,
+    "comments": 8
+  },
+  {
+    "id": 10,
+    "title": "En djupdykning i maskininlärning",
+    "author": "Johan Sjöberg",
+    "content": "Maskininlärningens grunder och praktiska tillämpningar.",
+    "published_date": "2023-10-05",
+    "views": 1560,
+    "likes": 240,
+    "comments": 20
+  },
+  {
+    "id": 11,
+    "title": "Så bygger du en framgångsrik startup",
+    "author": "Maria Holm",
+    "content": "Tips och råd för att starta och driva en framgångsrik startup.",
+    "published_date": "2023-09-12",
+    "views": 680,
+    "likes": 70,
+    "comments": 4
+  },
+  {
+    "id": 12,
+    "title": "IoT: Framtidens uppkopplade samhälle",
+    "author": "Niklas Berglund",
+    "content": "Hur IoT förändrar våra liv och vårt samhälle.",
+    "published_date": "2023-08-28",
+    "views": 890,
+    "likes": 110,
+    "comments": 10
+  },
+  {
+    "id": 13,
+    "title": "Digital marknadsföring 2024",
+    "author": "Eva Larsson",
+    "content": "De hetaste trenderna inom digital marknadsföring för 2024.",
+    "published_date": "2023-07-19",
+    "views": 1150,
+    "likes": 130,
+    "comments": 9
+  },
+  {
+    "id": 14,
+    "title": "E-handelns framtid",
+    "author": "Daniel Eriksson",
+    "content": "Vad kan vi förvänta oss av e-handeln under de kommande åren?",
+    "published_date": "2023-06-10",
+    "views": 1040,
+    "likes": 125,
+    "comments": 8
+  },
+  {
+    "id": 15,
+    "title": "Virtuell verklighet inom utbildning",
+    "author": "Linda Forsberg",
+    "content": "Hur VR kan användas för att förbättra lärandet.",
+    "published_date": "2023-05-14",
+    "views": 780,
+    "likes": 95,
+    "comments": 6
+  },
+  {
+    "id": 16,
+    "title": "5G och dess påverkan på samhället",
+    "author": "Martin Olsson",
+    "content": "Vilka förändringar kommer 5G att medföra?",
+    "published_date": "2023-04-22",
+    "views": 890,
+    "likes": 108,
+    "comments": 7
+  },
+  {
+    "id": 17,
+    "title": "Grön teknologi för en bättre framtid",
+    "author": "Helena Nyström",
+    "content": "Innovationer inom grön teknologi som hjälper miljön.",
+    "published_date": "2023-03-30",
+    "views": 950,
+    "likes": 120,
+    "comments": 9
+  },
+  {
+    "id": 18,
+    "title": "Robotar i industrin",
+    "author": "Fredrik Larsson",
+    "content": "Hur robotar används för att förbättra industriproduktionen.",
+    "published_date": "2023-02-18",
+    "views": 1020,
+    "likes": 128,
+    "comments": 10
+  },
+  {
+    "id": 19,
+    "title": "Biometri och säkerhet",
+    "author": "Emma Wallin",
+    "content": "För- och nackdelar med biometri för säkerhetslösningar.",
+    "published_date": "2023-01-05",
+    "views": 870,
+    "likes": 99,
+    "comments": 5
+  },
+  {
+    "id": 20,
+    "title": "Teknikens roll i framtidens sjukvård",
+    "author": "Anders Lindqvist",
+    "content": "Hur ny teknologi kan förbättra sjukvården.",
+    "published_date": "2022-12-15",
+    "views": 1330,
+    "likes": 200,
+    "comments": 15
+  },
+  {
+    "id": 1,
+    "title": "Effektivisering av arbetsflöden med AI",
+    "author": "Anna Svensson",
+    "content": "I denna artikel undersöker vi hur AI kan användas för att effektivisera arbetsflöden inom olika branscher.",
+    "published_date": "2024-06-01",
+    "views": 1023,
+    "likes": 124,
+    "comments": 12
+  },
+  {
+    "id": 2,
+    "title": "Framtidens hållbara energilösningar",
+    "author": "Karl Lindström",
+    "content": "Hållbara energilösningar blir allt viktigare i dagens samhälle. Här tittar vi på olika alternativ.",
+    "published_date": "2024-05-15",
+    "views": 875,
+    "likes": 98,
+    "comments": 7
+  },
+  {
+    "id": 3,
+    "title": "Introduktion till quantum computing",
+    "author": "Lisa Ek",
+    "content": "Quantum computing är en snabbt växande teknologi som lovar att revolutionera databehandling.",
+    "published_date": "2024-04-20",
+    "views": 1450,
+    "likes": 230,
+    "comments": 18
+  },
+  {
+    "id": 4,
+    "title": "Så förbättrar du din produktivitet med rätt verktyg",
+    "author": "Mikael Jonsson",
+    "content": "Produktivitet handlar inte bara om att arbeta hårdare utan smartare. Vi går igenom de bästa verktygen.",
+    "published_date": "2024-03-10",
+    "views": 620,
+    "likes": 54,
+    "comments": 5
+  },
+  {
+    "id": 5,
+    "title": "En guide till modern webbdesign",
+    "author": "Sofia Berg",
+    "content": "Webbdesign utvecklas ständigt. I denna guide går vi igenom de senaste trenderna och bästa praxis.",
+    "published_date": "2024-02-05",
+    "views": 980,
+    "likes": 112,
+    "comments": 9
+  },
+  {
+    "id": 6,
+    "title": "Blockchain-teknologi för nybörjare",
+    "author": "Erik Nilsson",
+    "content": "En introduktion till blockchain och dess potentiella användningsområden.",
+    "published_date": "2024-01-25",
+    "views": 1345,
+    "likes": 210,
+    "comments": 14
+  },
+  {
+    "id": 7,
+    "title": "Framsteg inom självkörande fordon",
+    "author": "Nina Karlsson",
+    "content": "De senaste innovationerna inom självkörande fordon och deras framtid.",
+    "published_date": "2024-01-15",
+    "views": 750,
+    "likes": 85,
+    "comments": 6
+  },
+  {
+    "id": 8,
+    "title": "Molntjänster: För- och nackdelar",
+    "author": "Oskar Andersson",
+    "content": "En genomgång av för- och nackdelar med olika molntjänster.",
+    "published_date": "2023-12-20",
+    "views": 1120,
+    "likes": 150,
+    "comments": 11
+  },
+  {
+    "id": 9,
+    "title": "Cybersäkerhet i en digital värld",
+    "author": "Karin Pettersson",
+    "content": "Hur skyddar vi oss mot digitala hot i dagens samhälle?",
+    "published_date": "2023-11-18",
+    "views": 980,
+    "likes": 123,
+    "comments": 8
+  },
+  {
+    "id": 10,
+    "title": "En djupdykning i maskininlärning",
+    "author": "Johan Sjöberg",
+    "content": "Maskininlärningens grunder och praktiska tillämpningar.",
+    "published_date": "2023-10-05",
+    "views": 1560,
+    "likes": 240,
+    "comments": 20
+  },
+  {
+    "id": 11,
+    "title": "Så bygger du en framgångsrik startup",
+    "author": "Maria Holm",
+    "content": "Tips och råd för att starta och driva en framgångsrik startup.",
+    "published_date": "2023-09-12",
+    "views": 680,
+    "likes": 70,
+    "comments": 4
+  },
+  {
+    "id": 12,
+    "title": "IoT: Framtidens uppkopplade samhälle",
+    "author": "Niklas Berglund",
+    "content": "Hur IoT förändrar våra liv och vårt samhälle.",
+    "published_date": "2023-08-28",
+    "views": 890,
+    "likes": 110,
+    "comments": 10
+  },
+  {
+    "id": 13,
+    "title": "Digital marknadsföring 2024",
+    "author": "Eva Larsson",
+    "content": "De hetaste trenderna inom digital marknadsföring för 2024.",
+    "published_date": "2023-07-19",
+    "views": 1150,
+    "likes": 130,
+    "comments": 9
+  },
+  {
+    "id": 14,
+    "title": "E-handelns framtid",
+    "author": "Daniel Eriksson",
+    "content": "Vad kan vi förvänta oss av e-handeln under de kommande åren?",
+    "published_date": "2023-06-10",
+    "views": 1040,
+    "likes": 125,
+    "comments": 8
+  },
+  {
+    "id": 15,
+    "title": "Virtuell verklighet inom utbildning",
+    "author": "Linda Forsberg",
+    "content": "Hur VR kan användas för att förbättra lärandet.",
+    "published_date": "2023-05-14",
+    "views": 780,
+    "likes": 95,
+    "comments": 6
+  },
+  {
+    "id": 16,
+    "title": "5G och dess påverkan på samhället",
+    "author": "Martin Olsson",
+    "content": "Vilka förändringar kommer 5G att medföra?",
+    "published_date": "2023-04-22",
+    "views": 890,
+    "likes": 108,
+    "comments": 7
+  },
+  {
+    "id": 17,
+    "title": "Grön teknologi för en bättre framtid",
+    "author": "Helena Nyström",
+    "content": "Innovationer inom grön teknologi som hjälper miljön.",
+    "published_date": "2023-03-30",
+    "views": 950,
+    "likes": 120,
+    "comments": 9
+  },
+  {
+    "id": 18,
+    "title": "Robotar i industrin",
+    "author": "Fredrik Larsson",
+    "content": "Hur robotar används för att förbättra industriproduktionen.",
+    "published_date": "2023-02-18",
+    "views": 1020,
+    "likes": 128,
+    "comments": 10
+  },
+  {
+    "id": 19,
+    "title": "Biometri och säkerhet",
+    "author": "Emma Wallin",
+    "content": "För- och nackdelar med biometri för säkerhetslösningar.",
+    "published_date": "2023-01-05",
+    "views": 870,
+    "likes": 99,
+    "comments": 5
+  },
+  {
+    "id": 20,
+    "title": "Teknikens roll i framtidens sjukvård",
+    "author": "Anders Lindqvist",
+    "content": "Hur ny teknologi kan förbättra sjukvården.",
+    "published_date": "2022-12-15",
+    "views": 1330,
+    "likes": 200,
+    "comments": 15
+  }
+]
