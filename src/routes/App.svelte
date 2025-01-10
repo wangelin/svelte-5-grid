@@ -14,12 +14,26 @@
     { key: "comments", caption: "comments", width: "100px", visible: false },
   ]);
 
-  let data = $state(raw_data);
+  function duplicate_items(array: any[], times: number) {
+    const total_length = array.length * times;
+    const duplicated_array = new Array(total_length);
+    let counter = 1;
+
+    for (let i = 0; i < total_length; i++) {
+      const item = array[i % array.length];
+      duplicated_array[i] = { ...item, id: counter++ };
+    }
+
+    return duplicated_array;
+  }
+
+  let data = $state(duplicate_items(raw_data, 100));
 </script>
 
-<Grid bind:headers bind:data />
-
+<!-- <Grid bind:headers bind:data /> -->
 <!-- <Grid height="20em" bind:headers bind:data /> -->
+<Grid height="2153px" bind:headers bind:data />
+
 <!-- 
 <strong>HEADERS</strong>
 <pre>{JSON.stringify(headers, null, 2)}</pre>

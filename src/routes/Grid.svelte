@@ -3,6 +3,13 @@
   import { css_value_to_px } from "./utils.js";
   import type { DataRecord, Header, Position } from "$lib/types";
   import type { Snippet } from "svelte";
+  import {
+    scrollX,
+    scrollY,
+    innerWidth,
+    innerHeight,
+  } from "svelte/reactivity/window";
+  import { get_visible_part, type VisiblePartRect } from "$lib/dom-utils.js";
 
   interface Props {
     headers: Header[];
@@ -27,7 +34,27 @@
   }: Props = $props();
 
   let visible_headers = $derived(headers.filter((x) => x.visible !== false));
+
   let container: HTMLElement | null = $state(null);
+  let rect = $derived.by<DOMRect | null>(() => {
+    if (
+      container &&
+      data_grid_height &&
+      contentRect && // This is strange but I seem to need it.
+      (innerHeight.current ?? 0) >= 0 &&
+      (scrollY.current ?? 0) >= 0 &&
+      scroll_value >= 0
+    ) {
+      return container.getBoundingClientRect();
+    }
+    return null;
+  });
+  let visible_part = $derived.by<VisiblePartRect | null>(() => {
+    if (rect) {
+      return get_visible_part(rect);
+    }
+    return null;
+  });
   let table_width = $derived(
     headers.reduce(
       (width, x) =>
@@ -35,6 +62,34 @@
       0
     )
   );
+
+  function calculate_visible_records() {
+    if (rect === null || visible_part === null || scrollY.current === undefined)
+      return;
+    const records_above_scroll_view = scroll_value / data_row_height;
+    const records_below_scroll_view =
+      (scroll_height - scroll_value - data_grid_height) / data_row_height;
+    const first_record_position =
+      rect.top + scrollY.current + header_row_height;
+    const last_record_position =
+      rect.bottom + scrollY.current + header_row_height - data_row_height;
+    const hidden_records_above =
+      ((visible_part.top - first_record_position) / data_row_height) | 0;
+    const hidden_records_below =
+      ((last_record_position - visible_part.bottom) / data_row_height) | 0;
+
+    let first_record_index_to_render = records_above_scroll_view | 0;
+    first_record_index_to_render += hidden_records_above;
+    first_record_index_to_render -= max_render_extra_above;
+    if (first_record_index_to_render < 0) first_record_index_to_render = 0;
+    let last_record_index_to_render =
+      data.length - (records_below_scroll_view | 0);
+    last_record_index_to_render -= hidden_records_below;
+    last_record_index_to_render += max_render_extra_below;
+    if (last_record_index_to_render > data.length - 1)
+      last_record_index_to_render = data.length - 1;
+  }
+
   let row_number_column = $derived(css_value_to_px(row_number_column_width));
   let active = $state(false);
   let selecting = $state(false);
@@ -45,16 +100,20 @@
 
   let header_row_height: number = $state(0);
   let data_grid_height: number = $state(0);
+  let data_height: number = $derived(data_grid_height - header_row_height);
+  let contentRect: DOMRectReadOnly | undefined = $state();
   let data_row_height: number = $state(0);
 
   let scroll_value = $state(0);
   let scroll_height = $derived(
     data.length * data_row_height + header_row_height
   );
+  let max_scroll_value = $derived(scroll_height - data_grid_height);
   let visible_records = $derived(
     (data_grid_height / data_row_height) |
       (0 + max_render_extra_above + max_render_extra_below)
   );
+  /*
   let start_record_index = $derived(
     Math.max(
       0,
@@ -70,12 +129,51 @@
       )
     )
   );
+  */
+  //   let start_record_index = $derived(0);
+  let start_record_index = $derived.by(() => {
+    if (rect === null || visible_part === null || scrollY.current === undefined)
+      return 0;
+    const records_above_scroll_view = scroll_value / data_row_height;
+    const first_record_position =
+      rect.top + scrollY.current + header_row_height;
+    const hidden_records_above =
+      ((visible_part.top - first_record_position) / data_row_height) | 0;
+
+    let first_record_index_to_render = records_above_scroll_view | 0;
+    first_record_index_to_render += hidden_records_above;
+    first_record_index_to_render -= max_render_extra_above;
+    if (first_record_index_to_render < 0) first_record_index_to_render = 0;
+    return first_record_index_to_render;
+  });
+  /*
   let end_record_index = $derived(
     Math.min(
       data.length - 1,
       start_record_index + visible_records + max_render_extra_below
     )
   );
+  */
+  //   let end_record_index = $derived(data.length - 1);
+  let end_record_index = $derived.by(() => {
+    if (rect === null || visible_part === null || scrollY.current === undefined)
+      return data.length - 1;
+    const records_below_scroll_view =
+      (scroll_height - scroll_value - data_grid_height) / data_row_height;
+    const last_record_position =
+      rect.bottom + scrollY.current + header_row_height - data_row_height;
+    const hidden_records_below =
+      ((last_record_position - visible_part.bottom) / data_row_height) | 0;
+
+    let last_record_index_to_render =
+      data.length - (records_below_scroll_view | 0);
+    last_record_index_to_render -= hidden_records_below;
+    last_record_index_to_render += max_render_extra_below;
+    if (last_record_index_to_render > data.length - 1)
+      last_record_index_to_render = data.length - 1;
+
+    return last_record_index_to_render;
+  });
 
   let clicked_position = $state();
   let last_grid_position: Position | undefined = $state();
@@ -141,30 +239,42 @@
     const target = e.target as HTMLElement;
     scroll_value = target?.scrollTop ?? 0;
   }
-
-  function onpagescroll() {
-    const page_scroll_top = document.documentElement.scrollTop;
-    const page_scroll_height = document.documentElement.scrollHeight;
-    const client_height = document.documentElement.clientHeight;
-    const rect = container?.getBoundingClientRect();
-    console.log(
-      (rect?.top ?? 0) + page_scroll_top,
-      (rect?.bottom ?? 0) + page_scroll_top,
-      page_scroll_top,
-      page_scroll_height,
-      client_height,
-      page_scroll_top / (page_scroll_height - client_height)
-    );
-  }
 </script>
 
-{visible_records}
-{status}
-{data_grid_height}
-{scroll_height}<br />
+<pre style:position="fixed" style:top="1em" style:right="1em">
+status: {status}
+start_record_index: {start_record_index}
+end_record_index: {end_record_index}
+header_row_height: {header_row_height}
+data_grid_height: {data_grid_height}
+data_height: {data_height}
+data_row_height: {data_row_height}
+scroll_value: {scroll_value}
+max_scroll_value: {max_scroll_value}
+scroll_height: {scroll_height}
+scrollX: {scrollX.current}
+scrollY: {scrollY.current}
+innerWidth: {innerWidth.current}
+innerHeight: {innerHeight.current}
+visible_part?.top: {visible_part?.top}
+visible_part?.bottom: {visible_part?.bottom}
+visible_part?.left: {visible_part?.left}
+visible_part?.right: {visible_part?.right}
+visible_part?.width: {visible_part?.width}
+visible_part?.height: {visible_part?.height}
+rect.bottom: {rect?.bottom}
+rect.height: {rect?.height}
+rect.left: {rect?.left}
+rect.right: {rect?.right}
+rect.top: {rect?.top}
+rect.width: {rect?.width}
+rect.x: {rect?.x}
+rect.y: {rect?.y}
+Data length {data.length}
+</pre>
+
 <svelte:window
   onpointerup={() => onpointerup(-1, -1)}
-  onscroll={onpagescroll}
   onpointermove={selecting ? onpointermove : undefined}
 />
 
@@ -172,6 +282,7 @@
   class="dg-wrapper"
   bind:this={container}
   bind:clientHeight={data_grid_height}
+  bind:contentRect
   {onscroll}
   style:height={grid_height ? grid_height : ""}
   {onpointerleave}
