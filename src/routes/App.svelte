@@ -30,9 +30,15 @@
   let data = $state(duplicate_items(raw_data, 100));
 </script>
 
-<!-- <Grid bind:headers bind:data /> -->
+<Grid
+  bind:headers
+  bind:data
+  --border-width="3px"
+  --border-color-selected="orange"
+  --background-color-selected="yellow"
+/>
 <!-- <Grid height="20em" bind:headers bind:data /> -->
-<Grid height="2153px" bind:headers bind:data />
+<!-- <Grid height="2153px" bind:headers bind:data /> -->
 
 <!-- 
 <strong>HEADERS</strong>

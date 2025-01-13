@@ -27,7 +27,7 @@
     data = $bindable(),
     height: grid_height = $bindable(),
     row_height = $bindable("32px"),
-    row_number_column_width = $bindable("32px"),
+    row_number_column_width = $bindable("0"),
     max_render_extra_above = 3,
     max_render_extra_below = 3,
     row_column_item,
@@ -90,13 +90,16 @@
       last_record_index_to_render = data.length - 1;
   }
 
-  let row_number_column = $derived(css_value_to_px(row_number_column_width));
+  let row_number_column_pixel_width = $derived(
+    css_value_to_px(row_number_column_width)
+  );
   let active = $state(false);
   let selecting = $state(false);
   let selections: Selection[] = $state([]);
   let status = $state();
-  let active_record = $state();
-  let active_header = $state();
+  let active_cell: { row: number; col: number } | undefined = $state();
+  let active_record: DataRecord | undefined = $state();
+  let active_header: Header | undefined = $state();
 
   let header_row_height: number = $state(0);
   let data_grid_height: number = $state(0);
@@ -175,7 +178,6 @@
     return last_record_index_to_render;
   });
 
-  let clicked_position = $state();
   let last_grid_position: Position | undefined = $state();
 
   function onpointerdown(
@@ -187,16 +189,19 @@
   ) {
     if (record === active_record && header === active_header) return;
     if (row === -1) return;
-    clicked_position = { x: e.clientX, y: e.clientY };
     active = true;
     selecting = true;
+    active_cell = { row, col };
     selections = [new Selection({ row, col })];
     if (record !== active_record || header !== active_header) {
       active_record = undefined;
       active_header = undefined;
     }
+    pointer_position = { x: e.clientX, y: e.clientY };
+    scroll();
   }
   function onpointerup(
+    e: PointerEvent,
     row: number,
     col: number,
     record?: DataRecord,
@@ -210,14 +215,55 @@
       selections.push(selection);
     }
     selecting = false;
+    pointer_position = { x: e.clientX, y: e.clientY };
   }
   function ondblclick(record: DataRecord, header: Header) {
     active_record = record;
     active_header = header;
   }
   function onfocus(e: FocusEvent) {}
+  let shift_key = $state(false);
+  let pointer_position: { x: number; y: number } | undefined;
   function onpointermove(e: PointerEvent) {
     if (!active) return;
+    pointer_position = { x: e.clientX, y: e.clientY };
+  }
+  function scroll() {
+    if (
+      !container ||
+      !selecting ||
+      !pointer_position ||
+      !visible_part ||
+      scrollY.current === undefined
+    )
+      return;
+    if (pointer_position.y < visible_part.top - (scrollY?.current ?? 0)) {
+      let y = visible_part.top - (scrollY?.current ?? 0) - pointer_position.y;
+      if (container.scrollHeight > container.clientHeight) {
+        container.scrollTo({
+          top: container.scrollTop - y * (shift_key ? 10 : 1),
+        });
+      } else {
+        window.scrollTo({
+          top: (scrollY.current ?? 0) - y * (shift_key ? 10 : 1),
+        });
+      }
+    }
+
+    if (pointer_position.y > visible_part.bottom - (scrollY.current ?? 0)) {
+      let y =
+        pointer_position.y - (visible_part.bottom - (scrollY.current ?? 0));
+      if (container.scrollHeight > container.clientHeight) {
+        container.scrollTo({
+          top: container.scrollTop + y * (shift_key ? 10 : 1),
+        });
+      } else {
+        window.scrollTo({
+          top: (scrollY.current ?? 0) + y * (shift_key ? 10 : 1),
+        });
+      }
+    }
+    setTimeout(scroll, 50);
   }
   function onpointerleave(e: PointerEvent) {
     last_grid_position = { x: e.clientX, y: e.clientY };
@@ -243,6 +289,7 @@
 
 <pre style:position="fixed" style:top="1em" style:right="1em">
 status: {status}
+shift_key: {shift_key}
 start_record_index: {start_record_index}
 end_record_index: {end_record_index}
 header_row_height: {header_row_height}
@@ -274,7 +321,13 @@ Data length {data.length}
 </pre>
 
 <svelte:window
-  onpointerup={() => onpointerup(-1, -1)}
+  onkeydown={(e) => {
+    shift_key = e.key === "Shift";
+  }}
+  onkeyup={(e) => {
+    if (e.key === "Shift") shift_key = false;
+  }}
+  onpointerup={(e) => onpointerup(e, -1, -1)}
   onpointermove={selecting ? onpointermove : undefined}
 />
 
@@ -289,7 +342,7 @@ Data length {data.length}
 >
   <table style:width="{table_width}px">
     <colgroup>
-      {#if row_number_column > 0}
+      {#if row_number_column_pixel_width > 0}
         <col
           style:min-width={row_number_column_width
             ? row_number_column_width
@@ -308,7 +361,7 @@ Data length {data.length}
     </colgroup>
     <thead>
       <tr style:background-color="white" bind:clientHeight={header_row_height}>
-        {#if row_number_column > 0}
+        {#if row_number_column_pixel_width > 0}
           <th
             style:min-width={row_number_column_width}
             style:width={row_number_column_width}
@@ -316,7 +369,7 @@ Data length {data.length}
             {#if row_column_item}
               {@render row_column_item(-1)}
             {:else}
-              {""}
+              Row
             {/if}
           </th>
         {/if}
@@ -347,7 +400,7 @@ Data length {data.length}
         {@const record = data[row]}
         {@const bottom_border = row === data.length - 1}
         <tr class="data-row" bind:clientHeight={data_row_height}>
-          {#if row_number_column > 0}
+          {#if row_number_column_pixel_width > 0}
             <td
               style:min-width={row_number_column_width}
               style:width={row_number_column_width}
@@ -358,7 +411,9 @@ Data length {data.length}
                 style:border-bottom-color={bottom_border
                   ? "hsl(0, 0%, 80%)"
                   : ""}
-                style:border-bottom-width={bottom_border ? "1px" : "none"}
+                style:border-bottom-width={bottom_border
+                  ? "var(--border-width, var(--dg-border-width))"
+                  : "none"}
                 style:height={row_height}
               >
                 {#if row_column_item}
@@ -372,6 +427,8 @@ Data length {data.length}
           {#each visible_headers as header, col}
             {@const { key, caption, visible, width } = header}
             {@const right_border = col === visible_headers.length - 1}
+            {@const is_active =
+              active_cell?.col === col && active_cell?.row === row}
             {@const {
               is_selected,
               left_selected,
@@ -418,29 +475,28 @@ Data length {data.length}
                 ondblclick={() => ondblclick(record, header)}
                 onpointerdown={(e) =>
                   onpointerdown(e, record, header, row, col)}
-                onpointerup={() => onpointerup(row, col, record, header)}
+                onpointerup={(e) => onpointerup(e, row, col, record, header)}
                 onpointerenter={() => onpointerenter(record, header, row, col)}
                 {onfocus}
                 role="gridcell"
                 tabindex={row * visible_headers.length + col}
                 data-dgrow={row}
                 data-dgcol={col}
+                class={[
+                  "cell",
+                  { is_selected },
+                  { left_selected },
+                  { top_selected },
+                  { right_selected },
+                  { bottom_selected },
+                ]}
                 style:height={row_height}
-                style:border-left-color={left_selected
-                  ? "hsla(220,100%,50%,0.8)"
-                  : "hsl(0, 0%, 90%)"}
-                style:border-top-color={top_selected
-                  ? "hsla(220,100%,50%,0.8)"
-                  : "hsl(0, 0%, 90%)"}
-                style:border-right-color={right_selected
-                  ? "hsla(220,100%,50%,0.8)"
-                  : "hsl(0, 0%, 90%)"}
-                style:border-bottom-color={bottom_selected
-                  ? "hsla(220,100%,50%,0.8)"
-                  : "hsl(0, 0%, 90%)"}
-                style:background={is_selected ? "hsla(220,100%,90%,0.4)" : ""}
-                style:border-right-width={right_border ? "1px" : "none"}
-                style:border-bottom-width={bottom_border ? "1px" : "none"}
+                style:border-right-width={right_border
+                  ? "var(--border-width, var(--dg-border-width))"
+                  : "none"}
+                style:border-bottom-width={bottom_border
+                  ? "var(--border-width, var(--dg-border-width))"
+                  : "none"}
               >
                 {#if header === active_header && record === active_record}
                   <textarea bind:value={record[key]} rows="1" cols="1"
@@ -471,13 +527,53 @@ Data length {data.length}
 <pre>{status}</pre>
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
   .dg-wrapper {
+    --dg-background-color-selected: hsla(205, 100%, 90%, 0.4);
+    --dg-border-color-selected: hsla(205, 100%, 50%, 0.8);
+    --dg-border-width: 1px;
     user-select: none;
     display: inline-block;
     overflow-y: auto;
+  }
+  .cell {
+    border-left-color: hsl(0, 0%, 90%);
+    border-top-color: hsl(0, 0%, 90%);
+    border-right-color: hsl(0, 0%, 90%);
+    border-bottom-color: hsl(0, 0%, 90%);
+  }
+  .is_selected {
+    background-color: var(
+      --background-color-selected,
+      var(--dg-background-color-selected)
+    );
+  }
+  .left_selected {
+    position: relative;
+    border-left-color: var(
+      --border-color-selected,
+      var(--dg-border-color-selected)
+    );
+  }
+  .top_selected {
+    border-top-color: var(
+      --border-color-selected,
+      var(--dg-border-color-selected)
+    );
+  }
+  .right_selected {
+    border-right-color: var(
+      --border-color-selected,
+      var(--dg-border-color-selected)
+    );
+  }
+  .bottom_selected {
+    border-bottom-color: var(
+      --border-color-selected,
+      var(--dg-border-color-selected)
+    );
+  }
+  * {
+    box-sizing: border-box;
   }
   table {
     table-layout: fixed;
@@ -502,8 +598,8 @@ Data length {data.length}
   }
 
   tr.data-row > td > div {
-    border-left-width: 1px;
-    border-top-width: 1px;
+    border-left-width: var(--border-width, var(--dg-border-width));
+    border-top-width: var(--border-width, var(--dg-border-width));
     border-right-width: 0;
     border-bottom-width: 0;
     border-style: solid;
