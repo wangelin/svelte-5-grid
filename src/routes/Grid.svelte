@@ -2,7 +2,7 @@
   import Selection from "./Selection.svelte.js";
   import { css_value_to_px } from "./utils.js";
   import type { DataRecord, Header, Position } from "$lib/types";
-  import type { Snippet } from "svelte";
+  import { type Snippet } from "svelte";
   import {
     scrollX,
     scrollY,
@@ -34,7 +34,7 @@
     onsort?: (type: "asc" | "desc", header: Header, event: Event) => void;
     onsearch?: (search: string, header: Header, event: Event) => void;
     sort?: SvelteMap<string, "asc" | "desc">;
-    search?: SvelteMap<string, string>;
+    search?: SvelteMap<string, string | number | boolean | null>;
   }
 
   let {
@@ -51,8 +51,13 @@
     onsort,
     onsearch,
     sort = $bindable(new SvelteMap<string, "asc" | "desc">()),
-    search = $bindable(new SvelteMap<string, string>()),
+    search = $bindable(
+      new SvelteMap<string, string | number | boolean | null>()
+    ),
   }: Props = $props();
+  let lookup_header = $derived(
+    new Map<string, Header>(headers.map((x) => [x.key, x]))
+  );
 
   let search_data = $derived(create_detailed_search_map(data));
 
@@ -60,7 +65,68 @@
     [...sort.entries()].map(([key, type]) => ({ key, type }))
   );
   let sorter = $derived(create_multi_sort(sort_criterias));
-  let sorted_data = $derived([...data].sort(sorter));
+
+  let searched_and_sorted_data: DataRecord[] = $derived.by(() => {
+    let searched_data: DataRecord[] = [];
+    if (search.size > 0) {
+      let sets = [];
+      for (let [key, search_value] of search) {
+        const header = lookup_header.get(key);
+
+        if (!header) continue;
+        sets.push(
+          new Set(
+            data.filter((x) => {
+              let value = x[key];
+              switch (header.type) {
+                case "number":
+                  return (
+                    parseFloat(search_value?.toString() ?? "") ===
+                    parseFloat(value)
+                  );
+                case "boolean":
+                  if (search_value === null) return true;
+                  const b_search_value =
+                    typeof search_value === "boolean"
+                      ? search_value
+                      : string_to_boolean(search_value?.toString() ?? "");
+                  return (
+                    b_search_value &&
+                    (typeof value === "string"
+                      ? string_to_boolean(value)
+                      : x[key])
+                  );
+                default: // "text" | "multiline" | "select"
+                  if (
+                    value
+                      .toLowerCase()
+                      .startsWith(search_value?.toString().toLowerCase()) ||
+                    value
+                      .toLowerCase()
+                      .endsWith(search_value?.toString().toLowerCase())
+                  ) {
+                    return true;
+                  }
+                  const trigrams = search_data.get(x)?.get(key);
+                  if (!trigrams) return true;
+                  const search_trigram = generate_trigrams(
+                    search_value?.toString() ?? ""
+                  );
+                  const score =
+                    10 * calculate_similarity(search_trigram, trigrams);
+                  return score >= 3;
+              }
+            })
+          )
+        );
+      }
+      searched_data = [...sets.reduce((s, x) => s.intersection(x))];
+    } else {
+      searched_data = [...data];
+    }
+    searched_data.sort(sorter);
+    return searched_data;
+  });
 
   let visible_headers = $derived(headers.filter((x) => x.visible !== false));
 
@@ -114,7 +180,8 @@
 
   let scroll_value = $state(0);
   let scroll_height = $derived(
-    data.length * actual_data_row_height + actual_header_row_height
+    searched_and_sorted_data.length * actual_data_row_height +
+      actual_header_row_height
   );
   let max_scroll_value = $derived(scroll_height - data_grid_height);
 
@@ -136,7 +203,7 @@
 
   let end_record_index = $derived.by(() => {
     if (rect === null || visible_part === null || scrollY.current === undefined)
-      return data.length - 1;
+      return searched_and_sorted_data.length - 1;
     const records_below_scroll_view =
       (scroll_height - scroll_value - data_grid_height) /
       actual_data_row_height;
@@ -150,11 +217,11 @@
       0;
 
     let last_record_index_to_render =
-      data.length - (records_below_scroll_view | 0);
+      searched_and_sorted_data.length - (records_below_scroll_view | 0);
     last_record_index_to_render -= hidden_records_below;
     last_record_index_to_render += max_render_extra_below;
-    if (last_record_index_to_render > data.length - 1)
-      last_record_index_to_render = data.length - 1;
+    if (last_record_index_to_render > searched_and_sorted_data.length - 1)
+      last_record_index_to_render = searched_and_sorted_data.length - 1;
 
     return last_record_index_to_render;
   });
@@ -172,6 +239,9 @@
     if (record === active_record && header === active_header) return;
     if (row === -1) {
       open_search = header;
+      if (header.type === "boolean") {
+        search.set(header.key, true);
+      }
       return;
     }
     open_search = undefined;
@@ -399,63 +469,50 @@ Data length {data.length}
           >
             <div style:display="flex" style:align-items="center">
               {#if header === open_search}
-                <input
-                  type="text"
-                  style:flex="1"
-                  placeholder={caption}
-                  value={search.get(header.key) ?? ""}
-                  oninput={(
-                    e: Event & { currentTarget: EventTarget & HTMLInputElement }
-                  ) => {
-                    const { value } = e.currentTarget;
-                    if (value === "" && search.get(header.key)) {
-                      search.delete(header.key);
-                    } else {
-                      search.set(header.key, value);
-                      const search_trigram = generate_trigrams(value);
-                      const tmp = [...search_data.entries()].filter(
-                        ([rec, map]) => {
-                          const key_value = rec[header.key];
-                          switch (header.type) {
-                            case "number":
-                              return (
-                                parseFloat(value) === parseFloat(key_value)
-                              );
-                            case "boolean":
-                              return (
-                                string_to_boolean(value) &&
-                                (typeof key_value === "string"
-                                  ? string_to_boolean(key_value)
-                                  : key_value)
-                              );
-                            default: // text, multiline, select, snippet, component
-                              if (
-                                key_value
-                                  .toLowerCase()
-                                  .startsWith(value.toLowerCase()) ||
-                                key_value
-                                  .toLowerCase()
-                                  .endsWith(value.toLowerCase())
-                              ) {
-                                return true;
-                              }
-
-                              if (map.has(header.key)) {
-                                const trigrams = map.get(header.key)!;
-                                const score = calculate_similarity(
-                                  search_trigram,
-                                  trigrams
-                                );
-                                return score > 0.5;
-                              }
-                              return false;
-                          }
+                {#if header.type === "boolean"}
+                  {#if search.has(header.key) && typeof search.get(header.key) === "boolean"}
+                    <input
+                      type="checkbox"
+                      checked={search.get(header.key) as boolean}
+                      onchange={(
+                        e: Event & {
+                          currentTarget: EventTarget & HTMLInputElement;
                         }
-                      );
-                      console.log(tmp);
-                    }
-                  }}
-                />
+                      ) => {
+                        search.set(header.key, null);
+                      }}
+                    />
+                  {:else}
+                    <span
+                      role="button"
+                      tabindex="0"
+                      onclick={() => search.set(header.key, true)}
+                      onkeypress={() => search.set(header.key, true)}
+                      style:flex="1"
+                      style:min-width="0"
+                      style:overflow="hidden">{caption}</span
+                    >
+                  {/if}
+                {:else}
+                  <input
+                    type="text"
+                    style:flex="1"
+                    placeholder={caption}
+                    value={search.get(header.key) ?? ""}
+                    oninput={(
+                      e: Event & {
+                        currentTarget: EventTarget & HTMLInputElement;
+                      }
+                    ) => {
+                      const { value } = e.currentTarget;
+                      if (value === "" && search.get(header.key)) {
+                        search.delete(header.key);
+                      } else {
+                        search.set(header.key, value);
+                      }
+                    }}
+                  />
+                {/if}
               {:else}
                 <div
                   style:flex="1 1 0"
@@ -509,10 +566,10 @@ Data length {data.length}
           ></div>
         </td>
       </tr>
-      {#each { length: end_record_index - start_record_index + 1 }, i}
+      {#each { length: end_record_index > start_record_index ? end_record_index - start_record_index + 1 : 0 }, i}
         {@const row = start_record_index + i}
-        {@const record = sorted_data[row]}
-        {@const bottom_border = row === data.length - 1}
+        {@const record = searched_and_sorted_data[row]}
+        {@const bottom_border = row === searched_and_sorted_data.length - 1}
         <tr
           class="data-row"
           bind:clientHeight={actual_data_row_height}
@@ -532,7 +589,7 @@ Data length {data.length}
                   : ""}
                 style:border-bottom-width={bottom_border
                   ? "var(--border-width, var(--dg-border-width))"
-                  : "none"}
+                  : "0"}
                 style:min-width={row_number_column_width}
                 style:width={row_number_column_width}
               >
@@ -614,10 +671,10 @@ Data length {data.length}
                 style:height={data_row_height}
                 style:border-right-width={right_border
                   ? "var(--border-width, var(--dg-border-width))"
-                  : "none"}
+                  : "0"}
                 style:border-bottom-width={bottom_border
                   ? "var(--border-width, var(--dg-border-width))"
-                  : "none"}
+                  : "0"}
               >
                 {#if header.editable !== false && header === active_header && record === active_record}
                   {#if header.type === "select" && header.options}
@@ -689,7 +746,7 @@ Data length {data.length}
         >
           <div
             style:height="{actual_data_row_height *
-              (data.length - 1 - end_record_index)}px"
+              (searched_and_sorted_data.length - 1 - end_record_index)}px"
           ></div>
         </td>
       </tr>

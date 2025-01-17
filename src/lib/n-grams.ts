@@ -17,8 +17,7 @@ export function calculate_similarity(
 ): number {
   const set_1 = n_grams_1 instanceof Set ? n_grams_1 : new Set(n_grams_1);
   const set_2 = n_grams_2 instanceof Set ? n_grams_2 : new Set(n_grams_2);
-  const intersection = [...set_1].filter((x) => set_2.has(x));
-  return intersection.length / Math.max(set_1.size, set_2.size);
+  return set_1.intersection(set_2).size / Math.max(set_1.size, set_2.size);
 }
 
 function example_filter_with_n_grams(
@@ -42,6 +41,7 @@ function example_filter_with_n_grams(
 export function create_detailed_search_map(
   array: Record<string, any>[]
 ): Map<Record<string, any>, Map<string, Set<string>>> {
+  console.time("create_detailed_search_map");
   const search_map = new Map<Record<string, any>, Map<string, Set<string>>>();
 
   for (const rec of array) {
@@ -57,5 +57,6 @@ export function create_detailed_search_map(
 
     search_map.set(rec, property_map);
   }
+  console.timeEnd("create_detailed_search_map");
   return search_map;
 }
